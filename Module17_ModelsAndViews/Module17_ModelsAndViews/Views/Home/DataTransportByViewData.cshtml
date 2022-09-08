@@ -1,9 +1,10 @@
 ﻿@{
     var users = ViewData["Users"] as User[];
+    ViewBag.Title = "DataTransportByViewData";
 }
 
 <ul>
-    @foreach (var user in Model)
+    @foreach (var user in users)
     {
         <li>@("Name: " + user.Name + " Age: " + user.Age + " City: " + user.City)</li>
     }

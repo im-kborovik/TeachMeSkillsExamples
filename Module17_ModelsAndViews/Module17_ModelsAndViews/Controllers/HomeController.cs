@@ -55,4 +55,9 @@ public class HomeController : Controller
     {
         return View(Users);
     }
+
+    public IActionResult ViewWithSeparateLayout()
+    {
+        return View(Users);
+    }
 }
