@@ -39,6 +39,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Components()
+    {
+        return View();
+    }
+
     public IActionResult DataTransportByViewData()
     {
         ViewData["Users"] = Users;
@@ -59,5 +64,10 @@ public class HomeController : Controller
     public IActionResult ViewWithSeparateLayout()
     {
         return View(Users);
+    }
+
+    public IActionResult PartialViewExample()
+    {
+        return View();
     }
 }

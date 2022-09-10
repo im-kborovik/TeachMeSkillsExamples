@@ -2,10 +2,32 @@
 
 @{
     ViewBag.Title = "Home Page";
-    // Layout = "_TestLayout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Примеры с представлениями и видами передачи данных в представление</h4>
+            <ul>
+                <li>
+                    @Html.ActionLink("DataTransportByViewData", "DataTransportByViewData")
+                </li>
+                <li>
+                    @Html.ActionLink("DataTransportByViewBag", "DataTransportByViewBag")
+                </li>
+                <li>
+                    @Html.ActionLink("DataTransportByModel", "DataTransportByModel")
+                </li>
+                <li>
+                    @Html.ActionLink("ViewWithSeparateLayout", "ViewWithSeparateLayout")
+                </li>
+                <li>
+                    @Html.ActionLink("Components", "Components")
+                </li>
+                <li>
+                    @Html.ActionLink("PartialViewExample", "PartialViewExample")
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

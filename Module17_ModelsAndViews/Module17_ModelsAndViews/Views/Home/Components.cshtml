@@ -1,0 +1,11 @@
+﻿<br/>
+@* Компонент из папки ViewComponents *@
+@await Component.InvokeAsync("Simple")
+<br/>
+@* Компонент SimpleComponentWithInheritance, определённый с помощью наследования *@
+@await Component.InvokeAsync("SimpleComponentWithInheritance")
+<br/>
+@* Компонент SimpleComponentWithAttribute, определённый с помощью аттрибута *@
+@await Component.InvokeAsync("SimpleComponentWithAttribute")
+<br/>
+@await Component.InvokeAsync("ViewExample")

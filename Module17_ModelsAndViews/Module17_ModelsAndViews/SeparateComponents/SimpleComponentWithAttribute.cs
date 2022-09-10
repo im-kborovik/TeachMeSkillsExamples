@@ -2,6 +2,9 @@
 
 namespace Module17_ModelsAndViews.SeparateComponents;
 
+/// <summary>
+/// Пример компонента, который определён через атрибут
+/// </summary>
 [ViewComponent]
 public class SimpleComponentWithAttribute
 {

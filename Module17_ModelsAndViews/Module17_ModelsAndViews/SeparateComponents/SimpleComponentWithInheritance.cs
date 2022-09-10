@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Module17_ModelsAndViews.ViewComponents;
 
 namespace Module17_ModelsAndViews.SeparateComponents;
 
+/// <summary>
+/// Пример компонента, который определён через наследования
+/// </summary>
 public class SimpleComponentWithInheritance : ViewComponent
 {
     public string Invoke()

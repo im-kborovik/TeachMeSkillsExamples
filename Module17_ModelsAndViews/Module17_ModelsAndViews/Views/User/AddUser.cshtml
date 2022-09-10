@@ -1,0 +1,22 @@
+﻿@model UserViewModel
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <p>
+        @Html.DisplayNameFor(q => q.Name)
+        <br>
+        @Html.TextBoxFor(q => q.Name)
+    </p>
+    <p>
+        @Html.DisplayNameFor(q => q.Age)
+        <br>
+        @Html.TextBoxFor(q => q.Age)
+    </p>
+    <p>
+        @Html.DisplayNameFor(q => q.Email)
+        <br>
+        @Html.TextBoxFor(q => q.Email)
+    </p>
+
+    <button type="submit">Click</button>
+}
