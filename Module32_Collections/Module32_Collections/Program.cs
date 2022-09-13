@@ -33,16 +33,10 @@ kindsOfCollections.Stack();
 
 #region Пример с yield итератором
 
-var yieldExampleWithoutIEnumerable = new YieldExample();
-yieldExampleWithoutIEnumerable.Print();
+var yieldExample = new YieldExample();
+yieldExample.PrintGetEnumerator();
 WriteEmptyLine();
-
-var yieldExampleWithIEnumerable = new YieldExample();
-yieldExampleWithIEnumerable.Print();
-WriteEmptyLine();
-
-var yieldExampleWithBreak = new YieldExampleWithBreak();
-yieldExampleWithBreak.Print();
+yieldExample.PrintGetEnumerable();
 WriteEmptyLine();
 
 #endregion Пример с yield итератором
