@@ -41,6 +41,9 @@ WriteEmptyLine();
 
 #endregion Пример с yield итератором
 
+var kindsOfGenericCollections = new KindsOfGenericCollections();
+kindsOfGenericCollections.LinkedList();
+
 void WriteEmptyLine()
 {
     Console.WriteLine();
