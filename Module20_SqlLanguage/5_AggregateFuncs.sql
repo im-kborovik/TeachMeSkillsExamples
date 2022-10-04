@@ -6,10 +6,10 @@
 );
 
 insert into Products_Aggregate
-values ('Картоха', 2.96),
-       ('Макароны', 4.9),
-       ('Молоко', 2.6),
-       ('Хлеб', 1.6);
+values (N'Картоха', 2.96),
+       (N'Макароны', 4.9),
+       (N'Молоко', 2.6),
+       (N'Хлеб', 1.6);
 
 select *
 from Products_Aggregate;
