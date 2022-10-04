@@ -1,9 +1,6 @@
 ﻿create database Module20_View;
 go;
 use Module20_View;
--- use master;
--- ALTER DATABASE [Module20_View] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
--- DROP DATABASE [Module20_View]
 
 create table Products
 (
