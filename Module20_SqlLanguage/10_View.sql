@@ -1,6 +1,7 @@
 ﻿create database Module20_View;
 go;
 use Module20_View;
+go
 
 create table Products
 (

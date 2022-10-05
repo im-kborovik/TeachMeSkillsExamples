@@ -1,6 +1,7 @@
 ﻿create database Module20_SubQueries;
-go;
+go
 use Module20_SubQueries;
+go
 
 create table Products
 (
