@@ -1,5 +1,5 @@
 ﻿create database Module20_View;
-go;
+go
 use Module20_View;
 go
 
@@ -56,7 +56,7 @@ values ((select Id from Products where Name = 'Galaxy S8'),
         (select Id from Customers where FirstName = 'Bob'),
         1,
         (select Price from Products where Name = 'iPhone 6S'));
-go;
+go
 
 -- простое создание представления
 create view CustomerProducts

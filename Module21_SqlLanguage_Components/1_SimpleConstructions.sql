@@ -1,5 +1,5 @@
 ﻿create database Module20_SimpleConstructions;
-go;
+go
 use Module20_SimpleConstructions;
 
 create table Products
@@ -25,7 +25,7 @@ create table Orders
     Quantity   int   not null default 1,
     Price      money not null
 );
-go;
+go
 
 insert into Products
 values ('iPhone 6', 'Apple', 2, 36000),

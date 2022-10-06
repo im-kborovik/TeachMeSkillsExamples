@@ -20,9 +20,9 @@
 -- year(datetime)
 
 create database Module20_NativeFunctions;
-go;
+go
 use Module20_NativeFunctions;
-go;
+go
 
 create table Cars
 (
