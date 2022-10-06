@@ -1,6 +1,7 @@
 ﻿create database Module20_Joins;
 go;
 use Module20_Joins;
+go
 
 create table Products
 (
