@@ -14,7 +14,7 @@ create table Products
 go
 
 create unique nonclustered index IX_Name_Manufacturer_Unique
-on Products(Name, Manufacturer)
+on Products(Name asc, Manufacturer asc)
 go
 
 insert into Products
