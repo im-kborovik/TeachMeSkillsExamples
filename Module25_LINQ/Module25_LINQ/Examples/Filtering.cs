@@ -4,6 +4,9 @@ using Module25_LINQ.Helpers;
 
 namespace Module25_LINQ.Examples;
 
+/// <summary>
+/// Этот пример показывает как мы можем фильтровать даынные с помощью методы Where.
+/// </summary>
 public class Filtering : DataService
 {
     public Filtering(DataStorage storage) : base(storage)
@@ -12,10 +15,10 @@ public class Filtering : DataService
 
     public void PrintUsersMoreThenAge(int age)
     {
-        Users.PrintUsers("Before filtering");
+        Users.PrintItems("Before filtering");
 
         var filteredUsers = Users.Where(q => q.Age > age);
 
-        filteredUsers.PrintUsers("After filtering");
+        filteredUsers.PrintItems("After filtering");
     }
 }

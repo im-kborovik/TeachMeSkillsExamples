@@ -1,8 +1,12 @@
 ﻿using Module25_LINQ.Common;
 using Module25_LINQ.Data;
+using Module25_LINQ.Helpers;
 
 namespace Module25_LINQ.Examples;
 
+/// <summary>
+/// Этот пример показывает как можно написать linq запросы
+/// </summary>
 public class KindOfLinqQuery : DataService
 {
     public KindOfLinqQuery(DataStorage storage) : base(storage)
@@ -14,19 +18,13 @@ public class KindOfLinqQuery : DataService
         var emails = from user in Users
                      select user.Email;
 
-        foreach (var email in emails)
-        {
-            Console.WriteLine(email);
-        }
+        emails.PrintItems();
     }
 
     public void PrintEmailsByExtensionMethods()
     {
         var emails = Users.Select(q => q.Email);
 
-        foreach (var email in emails)
-        {
-            Console.WriteLine(email);
-        }
+        emails.PrintItems();
     }
 }

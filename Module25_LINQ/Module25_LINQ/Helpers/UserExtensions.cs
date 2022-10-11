@@ -4,16 +4,16 @@ namespace Module25_LINQ.Helpers;
 
 public static class UserExtensions
 {
-    public static void PrintUsers(this IEnumerable<User> users, string messageBefore = null)
+    public static void PrintItems<T>(this IEnumerable<T> source, string messageBefore = null)
     {
         if (!string.IsNullOrEmpty(messageBefore))
         {
             Console.WriteLine(messageBefore);
         }
         
-        foreach (var user in users)
+        foreach (var item in source)
         {
-            Console.WriteLine(user);
+            Console.WriteLine(item);
         }
     }
 }

@@ -9,6 +9,6 @@ public sealed class ProductFaker : Faker<Product>
     {
         RuleFor(q => q.Email, email);
         RuleFor(q => q.Name, q => q.Commerce.ProductName());
-        RuleFor(q => q.Price, q => q.Commerce.Price());
+        RuleFor(q => q.Price, q => Convert.ToDecimal(q.Commerce.Price()));
     }
 }
