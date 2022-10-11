@@ -3,6 +3,9 @@ using Module25_LINQ.Data;
 
 namespace Module25_LINQ.Examples;
 
+/// <summary>
+/// Этот пример показывает как работает lazy loading в linq
+/// </summary>
 public class LazyLoading : DataService
 {
     public LazyLoading(DataStorage storage) : base(storage)

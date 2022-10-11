@@ -42,4 +42,5 @@ classRunner.Run<KindOfLinqQuery>()
            .Use(q => q.FirstAndSingle())
            .ReturnToRunner()
            .Run<LazyLoading>()
-           .Use(q => q.Example());
+           .Use(q => q.Example())
+           .ReturnToRunner();
