@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module30_Async", "Module30_Async\Module30_Async.csproj", "{75C5E30D-3134-4883-9FE6-85B794B374FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module30_Async.Web", "Module30_Async.Web\Module30_Async.Web.csproj", "{A4FE2E3A-7909-493C-86FE-A5064A24A6EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{75C5E30D-3134-4883-9FE6-85B794B374FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75C5E30D-3134-4883-9FE6-85B794B374FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75C5E30D-3134-4883-9FE6-85B794B374FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4FE2E3A-7909-493C-86FE-A5064A24A6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4FE2E3A-7909-493C-86FE-A5064A24A6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4FE2E3A-7909-493C-86FE-A5064A24A6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4FE2E3A-7909-493C-86FE-A5064A24A6EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
