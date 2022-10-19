@@ -6,3 +6,4 @@ fileSystemUnderstanding.FileInfoExample();
 
 var streamUnderstanding = new StreamUnderstanding();
 await streamUnderstanding.WorkWithFile();
+await streamUnderstanding.StreamReaderWriter();
