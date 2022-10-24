@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module23_24_CSharpWithDatabase", "Module23_24_CSharpWithDatabase\Module23_24_CSharpWithDatabase.csproj", "{CF567394-B3ED-47B3-80DF-D328D03CDC23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module23_24.Ado_Net", "Module23_24.Ado_Net\Module23_24.Ado_Net.csproj", "{F24AD626-1660-4E35-A2AA-5F39264480BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module23_24.Shared", "Module23_24.Shared\Module23_24.Shared.csproj", "{85775B73-5EE2-47F7-A5CA-C75B9879C92A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{CF567394-B3ED-47B3-80DF-D328D03CDC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF567394-B3ED-47B3-80DF-D328D03CDC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF567394-B3ED-47B3-80DF-D328D03CDC23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24AD626-1660-4E35-A2AA-5F39264480BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24AD626-1660-4E35-A2AA-5F39264480BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24AD626-1660-4E35-A2AA-5F39264480BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24AD626-1660-4E35-A2AA-5F39264480BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85775B73-5EE2-47F7-A5CA-C75B9879C92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85775B73-5EE2-47F7-A5CA-C75B9879C92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85775B73-5EE2-47F7-A5CA-C75B9879C92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85775B73-5EE2-47F7-A5CA-C75B9879C92A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
