@@ -1,0 +1,28 @@
+﻿@model IEnumerable<UserModel>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(q => q.UserId)</th>
+            <th>@Html.DisplayNameFor(q => q.Email)</th>
+            <th>@Html.DisplayNameFor(q => q.FirstName)</th>
+            <th>@Html.DisplayNameFor(q => q.LastName)</th>
+            <th>@Html.DisplayNameFor(q => q.BirthDate)</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.Email</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@(user.BirthDate?.ToShortDateString())</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+

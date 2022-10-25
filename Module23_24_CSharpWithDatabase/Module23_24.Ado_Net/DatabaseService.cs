@@ -4,12 +4,16 @@ using Module23_24.Shared;
 
 namespace Module23_24.Ado_Net
 {
-    public class DatabaseService : DbBase, IDatabaseService
+    public class DatabaseService : IDatabaseService
     {
+        private readonly IMasterConnectionProvider _connectionProvider;
         private static readonly object Locker = new();
         private static bool _isCreated;
 
-        protected override string ConnectionString => ConnectionStrings.SqlDatabaseConnectionMaster;
+        public DatabaseService(IMasterConnectionProvider connectionProvider)
+        {
+            _connectionProvider = connectionProvider;
+        }
 
         public bool EnsureDatabase()
         {
@@ -25,17 +29,18 @@ namespace Module23_24.Ado_Net
                     return _isCreated;
                 }
 
-                var hasDatabase = MakeInCommand(async command =>
-                                                {
-                                                    var checkDb =
-                                                        @$"select count(*) from master.sys.databases where name = '{ConnectionStrings.DatabaseName}';";
+                var hasDatabase = _connectionProvider
+                                  .MakeInCommand(async command =>
+                                                 {
+                                                     var checkDb =
+                                                         @$"select count(*) from master.sys.databases where name = '{ConnectionStrings.DatabaseName}';";
 
-                                                    command.CommandText = checkDb;
+                                                     command.CommandText = checkDb;
 
-                                                    var checkDbResult = await command.ExecuteScalarAsync();
+                                                     var checkDbResult = await command.ExecuteScalarAsync();
 
-                                                    return (int)checkDbResult! != 0;
-                                                })
+                                                     return (int)checkDbResult! != 0;
+                                                 })
                                   .GetAwaiter()
                                   .GetResult();
 
@@ -61,11 +66,11 @@ namespace Module23_24.Ado_Net
                 alter database [{ConnectionStrings.DatabaseName}] set single_user with rollback immediate;
                 drop database [{ConnectionStrings.DatabaseName}];
             ";
-            await MakeInCommand(command =>
-                                {
-                                    command.CommandText = sql;
-                                    return command.ExecuteNonQueryAsync();
-                                });
+            await _connectionProvider.MakeInCommand(command =>
+                                                    {
+                                                        command.CommandText = sql;
+                                                        return command.ExecuteNonQueryAsync();
+                                                    });
 
             _isCreated = false;
         }
@@ -74,13 +79,13 @@ namespace Module23_24.Ado_Net
         {
             const string sql = "create database AdoDotNetExample;";
 
-            MakeInCommand(command =>
-                          {
-                              command.CommandText = sql;
-                              return command.ExecuteNonQueryAsync();
-                          })
-                .GetAwaiter()
-                .GetResult();
+            _connectionProvider.MakeInCommand(command =>
+                                              {
+                                                  command.CommandText = sql;
+                                                  return command.ExecuteNonQueryAsync();
+                                              })
+                               .GetAwaiter()
+                               .GetResult();
         }
     }
 }
