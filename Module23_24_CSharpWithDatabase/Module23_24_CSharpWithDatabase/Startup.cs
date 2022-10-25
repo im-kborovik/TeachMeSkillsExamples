@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Module23_24.Ado_Net;
+using Module23_24.Ado_Net.Interfaces;
 
 namespace Module23_24_CSharpWithDatabase
 {
@@ -18,6 +20,9 @@ namespace Module23_24_CSharpWithDatabase
         {
             services.AddControllersWithViews()
                     .AddRazorRuntimeCompilation();
+
+            services.AddScoped<IDatabaseService, DatabaseService>();
+            services.AddScoped<ITableManager, AdoDotNetTableManager>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

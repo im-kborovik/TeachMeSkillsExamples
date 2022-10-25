@@ -9,11 +9,11 @@ namespace Module23_24.Ado_Net
     {
         protected readonly SqlConnection Connection;
 
-        protected DbBase(bool useMaster = false)
+        protected virtual string ConnectionString => ConnectionStrings.SqlDatabaseConnectionDefault;
+
+        protected DbBase()
         {
-            Connection = new SqlConnection(useMaster
-                                               ? ConnectionStrings.SqlDatabaseConnectionMaster
-                                               : ConnectionStrings.SqlDatabaseConnectionDefault);
+            Connection = new SqlConnection(ConnectionString);
         }
 
         protected async Task MakeInCommand(Func<SqlCommand, Task> func)
