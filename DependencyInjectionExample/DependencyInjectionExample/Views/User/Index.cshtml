@@ -1,0 +1,45 @@
+﻿@model IEnumerable<User>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(q => q.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(q => q.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(q => q.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(q => q.Email)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.BirthDate.ToShortDateString()</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <a href="@Url.Action("AddUser")">Add User</a>
+        </div>
+        <div class="col">
+            <a href="@Url.Action("UpdateUser")">Update User</a>
+        </div>
+        <div class="col">
+            <a href="@Url.Action("DeleteUser")">Delete User</a>
+        </div>
+    </div>
+</div>
