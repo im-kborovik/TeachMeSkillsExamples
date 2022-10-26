@@ -1,4 +1,6 @@
-﻿namespace Module23_24.Ado_Net.Entities
+﻿using System;
+
+namespace Module23_24.Shared.Entities
 {
     public class User
     {
@@ -10,6 +12,6 @@
 
         public string Email { get; set; }
 
-        public int? Age { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 }
