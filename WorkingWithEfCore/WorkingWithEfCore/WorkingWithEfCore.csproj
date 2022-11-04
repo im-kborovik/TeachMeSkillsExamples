@@ -16,10 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Database\MyDbContext.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
     </ItemGroup>
 
@@ -74,6 +70,10 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\lib\bootstrap\dist\css" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Models\UserModel.cs" />
     </ItemGroup>
 
 </Project>
