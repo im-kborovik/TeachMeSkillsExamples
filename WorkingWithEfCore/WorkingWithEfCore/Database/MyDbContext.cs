@@ -15,6 +15,10 @@ public class MyDbContext : DbContext
 
     public DbSet<Address> Addresses { get; set; }
 
+    public DbSet<Company> Companies { get; set; }
+
+    public DbSet<Contact> Contacts { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
@@ -30,6 +34,9 @@ public class MyDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.ApplyConfiguration(new CompanyConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new ContactConfiguration());
         modelBuilder.ApplyConfiguration(new AddressConfiguration());
     }
 }

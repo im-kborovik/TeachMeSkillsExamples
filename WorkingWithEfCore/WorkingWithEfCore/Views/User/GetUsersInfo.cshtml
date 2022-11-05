@@ -1,0 +1,25 @@
+﻿@model IEnumerable<UserInfoModel>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(q => q.CompanyName)</th>
+        <th>@Html.DisplayNameFor(q => q.FullName)</th>
+        <th>@Html.DisplayNameFor(q => q.Age)</th>
+        <th>@Html.DisplayNameFor(q => q.FullContact)</th>
+        <th>@Html.DisplayNameFor(q => q.FirstFullAddress)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.CompanyName</td>
+            <td>@user.FullName</td>
+            <td>@user.Age</td>
+            <td>@user.FullContact</td>
+            <td>@user.FirstFullAddress</td>
+        </tr>
+    }
+    </tbody>
+</table>
