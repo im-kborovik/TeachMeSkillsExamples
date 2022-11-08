@@ -1,9 +1,10 @@
+using DependencyInjection.EfCoreUserManagement.Extensions;
+using DependencyInjection.FileUserManagement.Extensions;
 using DependencyInjection.InMemoryUserManagement.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace DependencyInjectionExample;
 
@@ -20,22 +21,15 @@ public class Startup
     {
         services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
-
-        services.AddInMemoryUserManagement();
+        
+        // services.AddInMemoryUserManagement();
         // services.AddUserManagementByFile();
+        services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseExceptionHandler("/Home/Error");
-            app.UseHsts();
-        }
+        app.UseDeveloperExceptionPage();
 
         app.UseStaticFiles();
 

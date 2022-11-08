@@ -7,8 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DependencyInjection.Exceptions\DependencyInjection.Exceptions.csproj" />
+      <ProjectReference Include="..\DependencyInjection.Entities\DependencyInjection.Entities.csproj" />
       <ProjectReference Include="..\DependencyInjection.InMemoryUserManagement\DependencyInjection.InMemoryUserManagement.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.11" />
     </ItemGroup>
 
 </Project>

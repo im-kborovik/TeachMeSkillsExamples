@@ -25,7 +25,8 @@ public class UserController : Controller
                                            LastName = q.LastName,
                                            BirthDate = q.BirthDate,
                                            Email = q.Email,
-                                       }).ToArray();
+                                       })
+                          .ToArray();
         return View(result);
     }
 
