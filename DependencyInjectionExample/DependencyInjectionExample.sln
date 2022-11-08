@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection.FileUse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection.EfCoreUserManagement", "DependencyInjection.EfCoreUserManagement\DependencyInjection.EfCoreUserManagement.csproj", "{1F04902F-2858-40F6-984C-7CF35DDA77CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionExample.WebApi", "DependencyInjectionExample.WebApi\DependencyInjectionExample.WebApi.csproj", "{46A907A9-936B-49ED-9E8E-821929295BF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{1F04902F-2858-40F6-984C-7CF35DDA77CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F04902F-2858-40F6-984C-7CF35DDA77CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F04902F-2858-40F6-984C-7CF35DDA77CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A907A9-936B-49ED-9E8E-821929295BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A907A9-936B-49ED-9E8E-821929295BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A907A9-936B-49ED-9E8E-821929295BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A907A9-936B-49ED-9E8E-821929295BF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
