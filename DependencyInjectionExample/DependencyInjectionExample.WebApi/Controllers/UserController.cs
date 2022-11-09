@@ -55,6 +55,15 @@ public class UserController : ControllerBase
         return ToUserResponse(user);
     }
 
+    [HttpPut("{email}")]
+    public async Task<UserResponseDto> UpdateUser([FromRoute] string email)
+    {
+        var faker = new Faker();
+        var user = await _userService.UpdateUser(email, faker.Person.FirstName, faker.Person.LastName, faker.Person.DateOfBirth);
+
+        return ToUserResponse(user);
+    }
+
     [HttpDelete]
     public async Task DeleteUser()
     {

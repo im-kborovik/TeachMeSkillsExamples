@@ -22,9 +22,9 @@ public class Startup
         services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
         
-        // services.AddInMemoryUserManagement();
+        services.AddInMemoryUserManagement();
         // services.AddUserManagementByFile();
-        services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
+        // services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
