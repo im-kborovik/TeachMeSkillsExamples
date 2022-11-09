@@ -11,4 +11,9 @@ public class UserViewModel
     public DateTime BirthDate { get; set; }
 
     public string Email { get; set; }
+
+    public override string ToString()
+    {
+        return $"{FirstName} {LastName} {Email} {BirthDate:d}";
+    }
 }

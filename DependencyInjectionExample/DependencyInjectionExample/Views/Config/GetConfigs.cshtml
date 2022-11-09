@@ -1,0 +1,10 @@
+﻿@model ConfigModel
+
+<div>
+    <ul>
+        <li>@Model.TopSectionElement</li>
+        <li>@Model.NestedSectionElement</li>
+        <li>@Model.ObjectSectionElement.ToString()</li>
+        <li>@Model.ObjectSectionElementByOptions.ToString()</li>
+    </ul>
+</div>
