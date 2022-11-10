@@ -12,6 +12,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IFileSystemPathProvider, FileSystemPathProvider>();
 
         services.AddScoped<IUserService, FileUserService>();
+        // services.AddTransient<IUserService, FileUserService>();
 
         return services;
     }

@@ -1,0 +1,8 @@
+﻿{
+  "ObjectSectionElement": {
+    "Email": "test1@test.com",
+    "FirstName": "FirstTest",
+    "LastName": "LastTest",
+    "BirthDate": "2020-10-09"
+  }
+}
