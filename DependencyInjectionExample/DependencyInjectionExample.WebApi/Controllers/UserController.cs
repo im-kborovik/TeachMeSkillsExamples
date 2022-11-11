@@ -33,6 +33,14 @@ public class UserController : ControllerBase
         return ToUserResponse(user);
     }
 
+    [HttpPost("{email}/by-form")]
+    public async Task<UserResponseDto> AddUserByFormData([FromRoute] string email, [FromForm] UserRequestDto requestDto)
+    {
+        var user = await _userService.AddUser(email, requestDto.FirstName, requestDto.LastName, requestDto.BirthDate);
+
+        return ToUserResponse(user);
+    }
+
     [HttpPut("{email}")]
     public async Task<UserResponseDto> UpdateUser([FromRoute] string email, [FromBody] UserRequestDto requestDto)
     {
@@ -40,7 +48,7 @@ public class UserController : ControllerBase
 
         return ToUserResponse(user);
     }
-    
+
     [HttpDelete("{email}")]
     public Task DeleteUser([FromRoute] string email)
     {

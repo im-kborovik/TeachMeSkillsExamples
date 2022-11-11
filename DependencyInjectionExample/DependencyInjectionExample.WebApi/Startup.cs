@@ -1,4 +1,5 @@
 using DependencyInjection.EfCoreUserManagement.Extensions;
+using DependencyInjectionExample.WebApi.Middlewares;
 
 namespace DependencyInjectionExample.WebApi;
 
@@ -33,6 +34,8 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
+
+        app.UseMiddleware<ErrorHandlerMiddleware>();
 
         app.UseEndpoints(endpoints =>
                          {

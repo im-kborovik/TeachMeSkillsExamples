@@ -17,6 +17,11 @@ public class ErrorHandlerMiddleware
         {
             await _next.Invoke(httpContext);
         }
+        catch (ObjectExistsException ex)
+        {
+            httpContext.Response.StatusCode = StatusCodes.Status409Conflict;
+            await httpContext.Response.WriteAsync(ex.Message);
+        }
         catch (ObjectNotFoundException ex)
         {
             httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
