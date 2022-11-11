@@ -18,12 +18,33 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IReadOnlyCollection<UserResponseDto>> GetUser()
+    public async Task<IReadOnlyCollection<UserResponseDto>> GetUsers()
     {
         var users = await _userService.GetUsers();
-        var result = users.Select(ToUserResponse)
-                          .ToArray();
-        return result;
+        return users.Select(ToUserResponse)
+                    .ToArray();
+    }
+
+    [HttpPost("{email}")]
+    public async Task<UserResponseDto> AddUser([FromRoute] string email, [FromBody] UserRequestDto requestDto)
+    {
+        var user = await _userService.AddUser(email, requestDto.FirstName, requestDto.LastName, requestDto.BirthDate);
+
+        return ToUserResponse(user);
+    }
+
+    [HttpPut("{email}")]
+    public async Task<UserResponseDto> UpdateUser([FromRoute] string email, [FromBody] UserRequestDto requestDto)
+    {
+        var user = await _userService.UpdateUser(email, requestDto.FirstName, requestDto.LastName, requestDto.BirthDate);
+
+        return ToUserResponse(user);
+    }
+    
+    [HttpDelete("{email}")]
+    public Task DeleteUser([FromRoute] string email)
+    {
+        return _userService.DeleteUser(email);
     }
 
     [HttpPost("random")]
@@ -35,15 +56,7 @@ public class UserController : ControllerBase
         return ToUserResponse(user);
     }
 
-    [HttpPost("{email}")]
-    public async Task<UserResponseDto> AddUser([FromRoute] string email, [FromBody] UserRequestDto requestDto)
-    {
-        var user = await _userService.AddUser(email, requestDto.FirstName, requestDto.LastName, requestDto.BirthDate);
-
-        return ToUserResponse(user);
-    }
-
-    [HttpPut]
+    [HttpPut("random")]
     public async Task<UserResponseDto> UpdateUser()
     {
         var users = await _userService.GetUsers();
@@ -55,16 +68,7 @@ public class UserController : ControllerBase
         return ToUserResponse(user);
     }
 
-    [HttpPut("{email}")]
-    public async Task<UserResponseDto> UpdateUser([FromRoute] string email)
-    {
-        var faker = new Faker();
-        var user = await _userService.UpdateUser(email, faker.Person.FirstName, faker.Person.LastName, faker.Person.DateOfBirth);
-
-        return ToUserResponse(user);
-    }
-
-    [HttpDelete]
+    [HttpDelete("random")]
     public async Task DeleteUser()
     {
         var users = await _userService.GetUsers();

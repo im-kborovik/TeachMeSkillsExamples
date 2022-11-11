@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection.EfCoreU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionExample.WebApi", "DependencyInjectionExample.WebApi\DependencyInjectionExample.WebApi.csproj", "{46A907A9-936B-49ED-9E8E-821929295BF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection.WebApiUserManagement", "DependencyInjection.WebApiUserManagement\DependencyInjection.WebApiUserManagement.csproj", "{F3B42E1B-F4E8-4970-819E-C3532BD3E375}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{46A907A9-936B-49ED-9E8E-821929295BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46A907A9-936B-49ED-9E8E-821929295BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46A907A9-936B-49ED-9E8E-821929295BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B42E1B-F4E8-4970-819E-C3532BD3E375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B42E1B-F4E8-4970-819E-C3532BD3E375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B42E1B-F4E8-4970-819E-C3532BD3E375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B42E1B-F4E8-4970-819E-C3532BD3E375}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

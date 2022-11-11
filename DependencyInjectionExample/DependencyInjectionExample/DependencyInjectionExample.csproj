@@ -19,6 +19,7 @@
       <ProjectReference Include="..\DependencyInjection.Exceptions\DependencyInjection.Exceptions.csproj" />
       <ProjectReference Include="..\DependencyInjection.FileUserManagement\DependencyInjection.FileUserManagement.csproj" />
       <ProjectReference Include="..\DependencyInjection.InMemoryUserManagement\DependencyInjection.InMemoryUserManagement.csproj" />
+      <ProjectReference Include="..\DependencyInjection.WebApiUserManagement\DependencyInjection.WebApiUserManagement.csproj" />
     </ItemGroup>
 
     <ItemGroup>

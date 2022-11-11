@@ -2,6 +2,7 @@ using DependencyInjection.EfCoreUserManagement.Extensions;
 using DependencyInjection.Entities.Users;
 using DependencyInjection.FileUserManagement.Extensions;
 using DependencyInjection.InMemoryUserManagement.Extensions;
+using DependencyInjection.WebApiUserManagement.Extensions;
 using DependencyInjectionExample.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +30,10 @@ public class Startup
         services.Configure<UserViewModel>(Configuration.GetSection("ObjectSectionElement"));
 
         // services.AddUserManagementByFile();
-        services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
+        // services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
+
+        services.AddHttpClient();
+        services.AddWebApiUserManagement(Configuration);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
