@@ -1,0 +1,31 @@
+﻿@model UserViewModel
+
+
+<div class="row">
+    <form asp-action="AddUserWithValidation" method="post">
+        @Html.ValidationSummary(false)
+        <div>
+            @Html.LabelFor(q => q.Email, new { @class = "form-label"})
+            @Html.TextBoxFor(q => q.Email, new { @class="form-control" })
+            @Html.ValidationMessageFor(q => q.Email)
+        </div>
+        <div>
+            @Html.LabelFor(q => q.FirstName, new { @class = "form-label"})
+            @Html.TextBoxFor(q => q.FirstName, new { @class="form-control" })
+                    @Html.ValidationMessageFor(q => q.FirstName)
+        </div>
+        <div>
+            @Html.LabelFor(q => q.LastName, new { @class = "form-label"})
+            @Html.TextBoxFor(q => q.LastName, new { @class="form-control" })
+                    @Html.ValidationMessageFor(q => q.LastName)
+        </div>
+        <div>
+            @Html.LabelFor(q => q.BirthDate, new { @class = "form-label"})
+            @Html.TextBoxFor(q => q.BirthDate, new { type = "date", @class="form-control" })
+            @Html.ValidationMessageFor(q => q.BirthDate)
+        </div>
+        <div class="mt-1">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>

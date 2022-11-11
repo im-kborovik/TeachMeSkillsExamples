@@ -24,16 +24,17 @@ public class Startup
     {
         services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
-        
+
         // services.AddInMemoryUserManagement();
 
-        services.Configure<UserViewModel>(Configuration.GetSection("ObjectSectionElement"));
-
         // services.AddUserManagementByFile();
+
         // services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
 
         services.AddHttpClient();
         services.AddWebApiUserManagement(Configuration);
+
+        // services.Configure<UserViewModel>(Configuration.GetSection("ObjectSectionElement"));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

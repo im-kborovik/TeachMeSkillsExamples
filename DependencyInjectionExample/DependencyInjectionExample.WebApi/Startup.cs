@@ -1,3 +1,4 @@
+using System.Reflection;
 using DependencyInjection.EfCoreUserManagement.Extensions;
 using DependencyInjectionExample.WebApi.Middlewares;
 
@@ -18,7 +19,11 @@ public class Startup
 
         services.AddSwaggerGen();
 
-        services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
+        // services.AddInMemoryUserManagement();
+
+        // services.AddUserManagementByFile();
+
+        // services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -26,7 +31,7 @@ public class Startup
         app.UseSwagger();
         app.UseSwaggerUI(c =>
                          {
-                             c.SwaggerEndpoint("/swagger/v1/swagger.json", "InfoTest.Backend v1");
+                             c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{Assembly.GetExecutingAssembly().GetName().Name} v1");
                          });
 
         app.UseDeveloperExceptionPage();

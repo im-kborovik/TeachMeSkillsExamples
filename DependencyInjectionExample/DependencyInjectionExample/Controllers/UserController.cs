@@ -49,6 +49,24 @@ public class UserController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpGet]
+    public IActionResult AddUserWithValidation()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddUserWithValidation(UserViewModel userViewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            await _userService.AddUser(userViewModel.Email, userViewModel.FirstName, userViewModel.LastName, userViewModel.BirthDate);
+            return RedirectToAction("Index");
+        }
+        
+        return View(userViewModel);
+    }
+
     public async Task<IActionResult> DeleteUser()
     {
         var users = await _userService.GetUsers();
