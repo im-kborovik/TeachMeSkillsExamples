@@ -1,6 +1,6 @@
-﻿namespace DependencyInjection.Entities.Users;
+﻿namespace DependencyInjection.BusinessLayer.Dtos;
 
-public class User
+public class UserResponseDto
 {
     public Guid UserId { get; set; }
     

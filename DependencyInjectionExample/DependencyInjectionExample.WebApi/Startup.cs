@@ -1,5 +1,5 @@
 using System.Reflection;
-using DependencyInjection.EfCoreUserManagement.Extensions;
+using DependencyInjection.BusinessLayer.Extensions;
 using DependencyInjectionExample.WebApi.Middlewares;
 
 namespace DependencyInjectionExample.WebApi;
@@ -19,11 +19,7 @@ public class Startup
 
         services.AddSwaggerGen();
 
-        // services.AddInMemoryUserManagement();
-
-        // services.AddUserManagementByFile();
-
-        // services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
+        services.AddBusinessLayerServices(Configuration.GetConnectionString("DefaultConnection"));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

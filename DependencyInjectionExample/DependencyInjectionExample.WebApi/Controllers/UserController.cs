@@ -1,7 +1,6 @@
 ﻿using Bogus;
-using DependencyInjection.Entities.Users;
-using DependencyInjection.InMemoryUserManagement.Interfaces;
-using DependencyInjectionExample.WebApi.Dtos;
+using DependencyInjection.BusinessLayer.Dtos;
+using DependencyInjection.BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DependencyInjectionExample.WebApi.Controllers;
@@ -18,50 +17,52 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IReadOnlyCollection<UserResponseDto>> GetUsers()
+    public Task<IReadOnlyCollection<UserResponseDto>> GetUsers()
     {
-        var users = await _userService.GetUsers();
-        return users.Select(ToUserResponse)
-                    .ToArray();
+        return _userService.GetUsers();
     }
 
-    [HttpPost("{email}")]
-    public async Task<UserResponseDto> AddUser([FromRoute] string email, [FromBody] UserRequestDto requestDto)
+    [HttpGet("{userId:guid}")]
+    public Task<UserResponseDto> GetUser([FromRoute] Guid userId)
     {
-        var user = await _userService.AddUser(email, requestDto.FirstName, requestDto.LastName, requestDto.BirthDate);
-
-        return ToUserResponse(user);
+        return _userService.GetUser(userId);
     }
 
-    [HttpPost("{email}/by-form")]
-    public async Task<UserResponseDto> AddUserByFormData([FromRoute] string email, [FromForm] UserRequestDto requestDto)
+    [HttpPost]
+    public Task<UserResponseDto> AddUser([FromBody] UserRequestDto requestDto)
     {
-        var user = await _userService.AddUser(email, requestDto.FirstName, requestDto.LastName, requestDto.BirthDate);
-
-        return ToUserResponse(user);
+        return _userService.AddUser(requestDto);
     }
 
-    [HttpPut("{email}")]
-    public async Task<UserResponseDto> UpdateUser([FromRoute] string email, [FromBody] UserRequestDto requestDto)
+    [HttpPost("by-form")]
+    public Task<UserResponseDto> AddUserByFormData([FromForm] UserRequestDto requestDto)
     {
-        var user = await _userService.UpdateUser(email, requestDto.FirstName, requestDto.LastName, requestDto.BirthDate);
-
-        return ToUserResponse(user);
+        return _userService.AddUser(requestDto);
     }
 
-    [HttpDelete("{email}")]
-    public Task DeleteUser([FromRoute] string email)
+    [HttpPut("{userId:guid}")]
+    public Task<UserResponseDto> UpdateUser([FromRoute] Guid userId, [FromBody] UserRequestDto requestDto)
     {
-        return _userService.DeleteUser(email);
+        return _userService.UpdateUser(userId, requestDto);
+    }
+
+    [HttpDelete("{userId:guid}")]
+    public Task DeleteUser([FromRoute] Guid userId)
+    {
+        return _userService.DeleteUser(userId);
     }
 
     [HttpPost("random")]
-    public async Task<UserResponseDto> AddUser()
+    public Task<UserResponseDto> AddUser()
     {
         var faker = new Faker();
-        var user = await _userService.AddUser(faker.Person.Email, faker.Person.FirstName, faker.Person.LastName, faker.Person.DateOfBirth);
-
-        return ToUserResponse(user);
+        return _userService.AddUser(new UserRequestDto
+                                    {
+                                        Email = faker.Person.Email,
+                                        FirstName = faker.Person.FirstName,
+                                        LastName = faker.Person.LastName,
+                                        BirthDate = faker.Person.DateOfBirth
+                                    });
     }
 
     [HttpPut("random")]
@@ -69,11 +70,16 @@ public class UserController : ControllerBase
     {
         var users = await _userService.GetUsers();
         var faker = new Faker();
-        var anyEmail = faker.PickRandom(users.ToList()).Email;
+        var anyUserId = faker.PickRandom(users.Select(q => q.UserId).ToList());
 
-        var user = await _userService.UpdateUser(anyEmail, faker.Person.FirstName, faker.Person.LastName, faker.Person.DateOfBirth);
-
-        return ToUserResponse(user);
+        return await _userService.UpdateUser(anyUserId,
+                                             new UserRequestDto
+                                             {
+                                                 Email = faker.Person.Email,
+                                                 FirstName = faker.Person.FirstName,
+                                                 LastName = faker.Person.LastName,
+                                                 BirthDate = faker.Person.DateOfBirth
+                                             });
     }
 
     [HttpDelete("random")]
@@ -81,17 +87,8 @@ public class UserController : ControllerBase
     {
         var users = await _userService.GetUsers();
         var faker = new Faker();
-        var anyEmail = faker.PickRandom(users.ToList()).Email;
+        var anyUserId = faker.PickRandom(users.Select(q => q.UserId).ToList());
 
-        await _userService.DeleteUser(anyEmail);
+        await _userService.DeleteUser(anyUserId);
     }
-
-    private static UserResponseDto ToUserResponse(User user) =>
-        new()
-        {
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            BirthDate = user.BirthDate,
-            Email = user.Email,
-        };
 }

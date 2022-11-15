@@ -1,9 +1,5 @@
-using DependencyInjection.EfCoreUserManagement.Extensions;
-using DependencyInjection.Entities.Users;
-using DependencyInjection.FileUserManagement.Extensions;
-using DependencyInjection.InMemoryUserManagement.Extensions;
-using DependencyInjection.WebApiUserManagement.Extensions;
-using DependencyInjectionExample.Models;
+using DependencyInjection.BusinessLayer.Extensions;
+using DependencyInjection.Data.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,10 +25,10 @@ public class Startup
 
         // services.AddUserManagementByFile();
 
-        // services.AddEfCoreUserManagement(Configuration.GetConnectionString("DefaultConnection"));
+        services.AddBusinessLayerServices(Configuration.GetConnectionString("DefaultConnection"));
 
-        services.AddHttpClient();
-        services.AddWebApiUserManagement(Configuration);
+        // services.AddHttpClient();
+        // services.AddWebApiUserManagement(Configuration);
 
         // services.Configure<UserViewModel>(Configuration.GetSection("ObjectSectionElement"));
     }

@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Bogus;
-using DependencyInjection.InMemoryUserManagement.Interfaces;
+using DependencyInjection.BusinessLayer.Dtos;
+using DependencyInjection.BusinessLayer.Interfaces;
 using DependencyInjectionExample.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +35,13 @@ public class UserController : Controller
     public async Task<IActionResult> AddUser()
     {
         var faker = new Faker();
-        await _userService.AddUser(faker.Person.Email, faker.Person.FirstName, faker.Person.LastName, faker.Person.DateOfBirth);
+        await _userService.AddUser(new UserRequestDto
+                                   {
+                                       Email = faker.Person.Email,
+                                       FirstName = faker.Person.FirstName,
+                                       LastName = faker.Person.LastName,
+                                       BirthDate = faker.Person.DateOfBirth
+                                   });
 
         return RedirectToAction("Index");
     }
@@ -42,9 +50,16 @@ public class UserController : Controller
     {
         var users = await _userService.GetUsers();
         var faker = new Faker();
-        var anyEmail = faker.PickRandom(users.ToList()).Email;
+        var anyUserId = faker.PickRandom(users.Select(q => q.UserId).ToList());
 
-        await _userService.UpdateUser(anyEmail, faker.Person.FirstName, faker.Person.LastName, faker.Person.DateOfBirth);
+        await _userService.UpdateUser(anyUserId,
+                                      new UserRequestDto
+                                      {
+                                          Email = faker.Person.Email,
+                                          FirstName = faker.Person.FirstName,
+                                          LastName = faker.Person.LastName,
+                                          BirthDate = faker.Person.DateOfBirth
+                                      });
 
         return RedirectToAction("Index");
     }
@@ -56,14 +71,15 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddUserWithValidation(UserViewModel userViewModel)
+    public async Task<IActionResult> AddUserWithValidation(UserViewModel userViewModel, [FromServices] IMapper mapper)
     {
         if (ModelState.IsValid)
         {
-            await _userService.AddUser(userViewModel.Email, userViewModel.FirstName, userViewModel.LastName, userViewModel.BirthDate);
+            var requestDto = mapper.Map<UserRequestDto>(userViewModel);
+            await _userService.AddUser(requestDto);
             return RedirectToAction("Index");
         }
-        
+
         return View(userViewModel);
     }
 
@@ -71,9 +87,9 @@ public class UserController : Controller
     {
         var users = await _userService.GetUsers();
         var faker = new Faker();
-        var anyEmail = faker.PickRandom(users.ToList()).Email;
+        var anyUserId = faker.PickRandom(users.Select(q => q.UserId).ToList());
 
-        await _userService.DeleteUser(anyEmail);
+        await _userService.DeleteUser(anyUserId);
 
         return RedirectToAction("Index");
     }
